@@ -1,10 +1,13 @@
 package com.example.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @NoArgsConstructor //Constructor vacio
 @AllArgsConstructor //Constructor con todos los atributos
@@ -35,6 +38,10 @@ public class Customer {
 
     @Column(length = 150)
     private String address;
+
+    @OneToMany(mappedBy = "customer")
+    @JsonManagedReference
+    private List<Project> projects;
 
     /*
     public Customer() {

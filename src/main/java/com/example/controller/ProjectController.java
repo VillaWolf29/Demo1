@@ -38,7 +38,7 @@ public class ProjectController {
     }
     // http://localhost:9090/customers
     @PostMapping
-    public ResponseEntity<ProjectDTO> save(@RequestBody ProjectDTO dto) throws Exception{
+    public ResponseEntity<Project> save(@RequestBody ProjectDTO dto) throws Exception{
         Project obj = service.save(convertToEntity(dto));
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getIdProject()).toUri();
         return ResponseEntity.created(location).build();

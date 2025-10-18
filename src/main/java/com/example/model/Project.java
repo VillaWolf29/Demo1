@@ -1,5 +1,6 @@
 package com.example.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,13 +30,14 @@ public class Project {
     private Date startDate;
 
     @Column(nullable = false)
-    private Date estimateEndDate;
+    private Date estimatedEndDate;
 
     @Column(nullable = false)
     private String status;
 
     @ManyToOne //FK (Foreign Key)
-    @JoinColumn(name = "id_customer", nullable = false, foreignKey = @ForeignKey(name = "FK_PROJECT_CUSTOMER")) //Nombre del campo en la tabla (col
+    @JoinColumn(name = "id_customer", nullable = false)
+    @JsonBackReference//Nombre del campo en la tabla (col
     private Customer customer;
 
 }

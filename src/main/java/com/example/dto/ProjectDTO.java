@@ -1,6 +1,7 @@
 package com.example.dto;
 
 import com.example.model.Customer;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,7 +16,8 @@ public class ProjectDTO {
     private String name;
     private String location;
     private Date startDate;
+    @NotNull(message = "La fecha estimada de fin es obligatoria.")
     private Date estimatedEndDate;
     private String status;
-    private Customer customer;
+    private CustomerDTO customer;
 }
